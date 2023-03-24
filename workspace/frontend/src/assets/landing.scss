@@ -1,0 +1,27 @@
+.wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    padding-bottom: 2rem;
+
+    .news {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            overflow:hidden;
+            -webkit-box-orient: vertical;
+            display: block;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

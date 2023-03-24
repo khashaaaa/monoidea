@@ -1,0 +1,32 @@
+.foot {
+    border-top: 1px solid black;
+    padding-top: 2rem;
+    
+    .wrap {
+        width: 80%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .section {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                font-size: 12px;
+                line-height: 2;
+            }
+        }
+    }
+
+    .bottomline {
+        width: 100%;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        font-size: 12px;
+    }
+}

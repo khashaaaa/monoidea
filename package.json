@@ -1,0 +1,22 @@
+{
+  "name": "monoidea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev",
+    "start": "turbo run start",
+    "build": "turbo run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.8.5"
+  },
+  "workspaces": [
+    "workspace/*"
+  ],
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

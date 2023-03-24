@@ -1,0 +1,114 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type News {
+  mark: String!
+  title: String!
+  body: String!
+  imagelink: String!
+  markJournalist: String!
+  journalist: String!
+  type: NewsType!
+  created: DateTime!
+  updated: DateTime!
+  getJournalist: Journalist!
+}
+
+"""News types"""
+enum NewsType {
+  POLITICS
+  ECONOMICS
+  TECHNOLOGY
+  SOCIETY
+  WORLD
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Journalist {
+  mark: String!
+  name: String!
+  email: String!
+  mobile: String!
+  news: [News!]
+  created: DateTime!
+  updated: DateTime!
+}
+
+input NewsInput {
+  mark: String!
+  title: String!
+  body: String!
+  imagelink: String!
+  markJournalist: String!
+  journalist: String!
+  type: NewsType!
+  created: DateTime!
+  updated: DateTime!
+}
+
+input JournalistInput {
+  mark: String!
+  name: String!
+  email: String!
+  mobile: String!
+  news: [NewsInput!]
+  created: DateTime!
+  updated: DateTime!
+}
+
+type Query {
+  loginJournalist(loginInput: LoginInput!): Journalist!
+  findAllJournalist: [Journalist!]!
+  findOneJournalist(mark: String!): Journalist!
+  findAllNews: [News!]!
+  findOneNews(mark: String!): News!
+  typeFilter(type: String!): [News!]!
+}
+
+input LoginInput {
+  email: String!
+  mobile: String!
+}
+
+type Mutation {
+  createJournalist(createJournalistInput: CreateJournalistInput!): Journalist!
+  updateJournalist(updateJournalistInput: UpdateJournalistInput!): Journalist!
+  removeJournalist(mark: String!): String!
+  createNews(createNewsInput: CreateNewsInput!): News!
+  updateNews(updateNewsInput: UpdateNewsInput!): News!
+  removeNews(mark: String!): String!
+}
+
+input CreateJournalistInput {
+  name: String!
+  email: String!
+  mobile: String!
+}
+
+input UpdateJournalistInput {
+  mark: String!
+  name: String!
+  email: String!
+  mobile: String!
+}
+
+input CreateNewsInput {
+  title: String!
+  body: String!
+  imagelink: String!
+  markJournalist: String!
+  journalist: String!
+  type: NewsType!
+}
+
+input UpdateNewsInput {
+  mark: String!
+  title: String!
+  body: String!
+  type: NewsType!
+}
