@@ -4,7 +4,6 @@ import { News } from './news.entity';
 import { Journalist } from '../journalist/journalist.entity';
 import { CreateNewsInput } from './input/createnews.input';
 import { UpdateNewsInput } from './input/updatenews.input';
-import { TypeFilter } from './input/typefilter.input';
 import { NewsType } from '../variant/newstype';
 
 @Resolver(() => News)

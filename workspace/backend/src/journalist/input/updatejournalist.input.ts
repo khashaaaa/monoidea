@@ -2,15 +2,15 @@ import { InputType, Field } from '@nestjs/graphql'
 
 @InputType()
 export class UpdateJournalistInput {
-    @Field()
+    @Field(() => String)
     mark: string;
 
-    @Field()
+    @Field(() => String)
     name: string;
 
-    @Field()
+    @Field(() => String)
     email: string;
 
-    @Field()
+    @Field(() => String)
     mobile: string;
 }

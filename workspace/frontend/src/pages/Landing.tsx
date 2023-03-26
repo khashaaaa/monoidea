@@ -1,9 +1,18 @@
-import { useQuery } from "@apollo/client"
-import { GET_ALL_NEWS } from "../graphql/news/queries"
+import { gql, useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
 import '../assets/landing.scss'
 
 export const Landing = () => {
+
+  const GET_ALL_NEWS = gql`
+    query {
+        findAllNews {
+            mark,
+            title,
+            imagelink
+        }
+    }
+  `
 
   const { data } = useQuery(GET_ALL_NEWS)
 

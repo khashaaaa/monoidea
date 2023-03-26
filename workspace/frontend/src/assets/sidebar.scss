@@ -1,6 +1,15 @@
 .sidebar {
     padding-bottom: 2rem;
 
+    .title {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+        color: slategrey;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
     .recent {
         display: flex;
         flex-direction: column;
@@ -9,7 +18,7 @@
         padding-bottom: 2rem;
         border-bottom: 1px solid black;
 
-        .title {
+        .post {
             overflow:hidden;
             -webkit-box-orient: vertical;
             display: block;

@@ -1,16 +1,26 @@
-import { useMutation } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
 import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import { REGISTER_JOURNALIST } from '../graphql/journalist/mutations'
 import '../assets/register.scss'
 
 export const Register = () => {
+
+    const REGISTER_JOURNALIST = gql`
+        mutation CreateJournalist($createJournalistInput: CreateJournalistInput!) {
+            createJournalist(createJournalistInput: $createJournalistInput) {
+                mark,
+                name,
+                email,
+                mobile
+            }
+        }
+    `
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [mobile, setMobile] = useState('')
 
-    const [createJournalist, { loading, data }] = useMutation(REGISTER_JOURNALIST)
+    const [createJournalist, { loading, error, data }] = useMutation(REGISTER_JOURNALIST)
 
     if(data) {
         return <Navigate to="/login" />

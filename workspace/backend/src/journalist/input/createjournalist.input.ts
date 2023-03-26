@@ -2,12 +2,12 @@ import { InputType, Field } from '@nestjs/graphql'
 
 @InputType()
 export class CreateJournalistInput {
-    @Field()
+    @Field(() => String)
     name: string;
 
-    @Field()
+    @Field(() => String)
     email: string;
 
-    @Field()
+    @Field(() => String)
     mobile: string;
 }

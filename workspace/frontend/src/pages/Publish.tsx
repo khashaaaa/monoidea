@@ -1,10 +1,19 @@
-import { useMutation } from '@apollo/client'
-import { Link, useParams } from 'react-router-dom'
-import { PUBLISH_NEWS } from '../graphql/journalist/mutations'
+import { gql, useMutation } from '@apollo/client'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import '../assets/publish.scss'
 
 export const Publish = () => {
+
+    const PUBLISH_NEWS = gql`
+        mutation CreateNews($createNewsInput: CreateNewsInput!) {
+            createNews(createNewsInput: $createNewsInput) {
+                mark
+            }
+        }
+    `
+
+    const navigate = useNavigate()
 
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -15,12 +24,18 @@ export const Publish = () => {
 
     const [createNews, { data }] = useMutation(PUBLISH_NEWS)
 
+    if(data) {
+        setTimeout(() => {
+            return navigate(0)
+        }, 1000)
+    }
+
     return (
         <div className="publish">
             <h3 className="title">{data ? 'Мэдээ нийтлэгдлээ' : 'Нийтлэх'}</h3>
             <form onSubmit={(e) => {
                 e.preventDefault()
-                createNews({ variables: { createNewsInput: { title, body, imagelink, markJournalist: mark, journalist: mark, type } } })
+                createNews({ variables: { createNewsInput: { title, body, imagelink, journalist: mark, markJournalist: mark,  type } } })
             }}>
                 <input name="title" placeholder='Гарчиг' onChange={e => setTitle(e.target.value)} />
                 <input name="body" placeholder='Мэдээлэл' onChange={e => setBody(e.target.value)} />

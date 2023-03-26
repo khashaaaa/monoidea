@@ -1,20 +1,32 @@
-import { useLazyQuery } from "@apollo/client"
+import { gql, useLazyQuery } from "@apollo/client"
 import { useState } from "react"
 import { Link, Navigate } from 'react-router-dom'
-import { JOURNALIST_LOGIN } from "../graphql/journalist/queries"
 import '../assets/login.scss'
 
 export const Login = () => {
 
+  const JOURNALIST_LOGIN = gql`
+      query LoginJournalist($loginInput: LoginInput!) {
+          loginJournalist(loginInput: $loginInput)
+          {
+              mark,
+              name,
+              email,
+              mobile
+          }
+      }
+  `
+
   const [email, setEmail] = useState('')
   const [mobile, setMobile] = useState('')
 
-  const [loginJournalist, { loading, data }] = useLazyQuery(JOURNALIST_LOGIN)
+  const [loginJournalist, { loading, error, data }] = useLazyQuery(JOURNALIST_LOGIN)
 
   if(data) {
     const mark = data?.loginJournalist.mark
     const ema = data?.loginJournalist.email
     const mob = data?.loginJournalist.mobile
+    localStorage.setItem("journalist", JSON.stringify(data?.loginJournalist))
 
     if(ema === email && mob === mobile) {
       return <Navigate to={`/${mark}/publish`} />

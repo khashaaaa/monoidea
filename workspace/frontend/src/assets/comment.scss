@@ -39,6 +39,9 @@
 
         textarea {
             width: 100%;
+            outline: 0;
+            border: 1px solid black;
+            padding: 1rem;
         }
 
         .submit {
@@ -55,6 +58,24 @@
                 border-radius: 50px;
                 padding: 3px 1rem;
                 cursor: pointer;
+            }
+        }
+    }
+
+    .conversations {
+        margin-top: 2rem;
+        border-top: 1px solid lightgray;
+
+        .comm {
+            font-size: 12px;
+            margin-top: 1rem;
+            background-color: aliceblue;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+
+            .user {
+                margin-right: 2rem;
             }
         }
     }

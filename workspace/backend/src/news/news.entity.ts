@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ObjectType, InputType, Field } from '@nestjs/graphql';
-import { Journalist } from '../journalist/journalist.entity';
 import { NewsType } from '../variant/newstype';
 
 @Entity()
@@ -13,22 +12,18 @@ export class News {
   mark: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   title: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   body: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   imagelink: string;
 
   @Column()
-  @Field()
-  markJournalist: string;
-
-  @ManyToOne(() => Journalist, (journalist) => journalist.news)
   @Field(() => String)
   journalist: string;
 

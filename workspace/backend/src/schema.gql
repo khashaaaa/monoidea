@@ -2,12 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Journalist {
+  mark: String!
+  name: String!
+  email: String!
+  mobile: String!
+  created: DateTime!
+  updated: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type News {
   mark: String!
   title: String!
   body: String!
   imagelink: String!
-  markJournalist: String!
   journalist: String!
   type: NewsType!
   created: DateTime!
@@ -24,17 +37,26 @@ enum NewsType {
   WORLD
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+type Comment {
+  mark: Int!
+  text: String!
+  user: String!
+  news: News!
+  created: DateTime!
+}
 
-type Journalist {
+type Like {
+  mark: Int!
+  news: String!
+  ipaddr: String!
+  created: DateTime!
+}
+
+input JournalistInput {
   mark: String!
   name: String!
   email: String!
   mobile: String!
-  news: [News!]
   created: DateTime!
   updated: DateTime!
 }
@@ -44,21 +66,25 @@ input NewsInput {
   title: String!
   body: String!
   imagelink: String!
-  markJournalist: String!
   journalist: String!
   type: NewsType!
   created: DateTime!
   updated: DateTime!
 }
 
-input JournalistInput {
-  mark: String!
-  name: String!
-  email: String!
-  mobile: String!
-  news: [NewsInput!]
+input CommentInput {
+  mark: Int!
+  text: String!
+  user: String!
+  news: NewsInput!
   created: DateTime!
-  updated: DateTime!
+}
+
+input LikeInput {
+  mark: Int!
+  news: String!
+  ipaddr: String!
+  created: DateTime!
 }
 
 type Query {
@@ -68,6 +94,7 @@ type Query {
   findAllNews: [News!]!
   findOneNews(mark: String!): News!
   typeFilter(type: String!): [News!]!
+  findAllComment(news: String!): [Comment!]!
 }
 
 input LoginInput {
@@ -82,6 +109,9 @@ type Mutation {
   createNews(createNewsInput: CreateNewsInput!): News!
   updateNews(updateNewsInput: UpdateNewsInput!): News!
   removeNews(mark: String!): String!
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  createLike(createLikeInput: CreateLikeInput!): Like!
+  removeLike(mark: Int!): Like!
 }
 
 input CreateJournalistInput {
@@ -103,7 +133,7 @@ input CreateNewsInput {
   imagelink: String!
   markJournalist: String!
   journalist: String!
-  type: NewsType!
+  type: String!
 }
 
 input UpdateNewsInput {
@@ -111,4 +141,18 @@ input UpdateNewsInput {
   title: String!
   body: String!
   type: NewsType!
+}
+
+input CreateCommentInput {
+  text: String!
+  user: String!
+  news: String!
+}
+
+input CreateLikeInput {
+  ipaddr: String!
+}
+
+type Subscription {
+  commentAdded: Comment!
 }

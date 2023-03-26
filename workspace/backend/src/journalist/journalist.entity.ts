@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ObjectType, InputType, Field } from '@nestjs/graphql';
-import { News } from '../news/news.entity';
 
 @Entity()
 @ObjectType()
@@ -12,20 +11,16 @@ export class Journalist {
   mark: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   name: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   email: string;
 
   @Column()
-  @Field()
+  @Field(() => String)
   mobile: string;
-
-  @OneToMany(() => News, (news) => news.journalist)
-  @Field(() => [News], { nullable: true })
-  news?: News[];
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   @Field(() => Date)

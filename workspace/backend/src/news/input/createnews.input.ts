@@ -3,21 +3,21 @@ import { NewsType } from '../../variant/newstype';
 
 @InputType()
 export class CreateNewsInput {
-    @Field()
+    @Field(() => String)
     title: string;
 
-    @Field()
+    @Field(() => String)
     body: string;
 
-    @Field()
+    @Field(() => String)
     imagelink: String;
 
-    @Field()
+    @Field(() => String)
     markJournalist: String;
 
-    @Field()
+    @Field(() => String)
     journalist: string;
 
-    @Field(() => NewsType)
+    @Field(() => String)
     type: NewsType;
 }

@@ -10,6 +10,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { JournalistModule } from './journalist/journalist.module';
 import { NewsModule } from './news/news.module';
+import { CommentModule } from './comment/comment.module';
+import { LikeModule } from './like/like.module';
+import { PubSub } from 'graphql-subscriptions';
 
 @Module({
   imports: [
@@ -21,9 +24,7 @@ import { NewsModule } from './news/news.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      subscriptions: {
-        'graphql-ws': true
-      }
+      installSubscriptionHandlers: true
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -40,9 +41,11 @@ import { NewsModule } from './news/news.module';
       })
     }),
     JournalistModule,
-    NewsModule
+    NewsModule,
+    CommentModule,
+    LikeModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PubSub],
 })
 export class AppModule {}

@@ -1,9 +1,18 @@
-import { useQuery } from "@apollo/client"
+import { gql, useQuery } from "@apollo/client"
 import { Link, useParams } from "react-router-dom"
-import { GET_NEWS_BY_TYPE } from "../graphql/news/queries"
 import '../assets/landing.scss'
 
 export const Category = () => {
+
+  const GET_NEWS_BY_TYPE = gql`
+      query TypeFilter($type: String!) {
+          typeFilter(type: $type) {
+              mark,
+              title,
+              imagelink
+          }
+      }
+  `
 
     const { type } = useParams()
     const { data } = useQuery(GET_NEWS_BY_TYPE, { variables: { type } })
