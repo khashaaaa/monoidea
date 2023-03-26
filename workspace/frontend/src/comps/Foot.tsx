@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../assets/foot.scss'
 
+// Footer section of website
 export const Foot = () => {
 
     const d = new Date()

@@ -25,18 +25,20 @@ export const App = () => {
   const apollo = new ApolloClient({
     link: wsLink,
     cache: new InMemoryCache(),
-    uri: "http://localhost:3000/graphql"
+    uri: GRAPHQL_ENDPOINT
   })
 
   return (
     <ApolloProvider client={apollo}>
       <BrowserRouter>
         <Routes>
+          {`Layout 1`}
           <Route element={<LayoutOne children={undefined} />}>
               <Route index element={<Landing />} />
               <Route path="/:mark" element={<News />} />
               <Route path="/category/:type" element={<Category />} />
           </Route>
+          {`Layout 2`}
           <Route element={<LayoutTwo />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

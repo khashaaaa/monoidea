@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
 import '../assets/landing.scss'
 
+// Main page
 export const Landing = () => {
 
   const GET_ALL_NEWS = gql`

@@ -17,6 +17,7 @@ import { PubSub } from 'graphql-subscriptions';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      // ENV mode solih heseg
       envFilePath: `${process.cwd()}/config/variables/${process.env.NODE_ENV}.env`,
       isGlobal: true,
       load: [envconfig]

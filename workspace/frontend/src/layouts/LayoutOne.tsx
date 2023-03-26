@@ -9,6 +9,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
+// Main layout
 export const LayoutOne = (props: LayoutProps) => {
   return (
     <div>

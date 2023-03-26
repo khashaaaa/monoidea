@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client"
 import '../assets/sidebar.scss'
 import { Link } from "react-router-dom"
 
+// Recent news section
 export const Sidebar = () => {
 
     const GET_ALL_NEWS = gql`

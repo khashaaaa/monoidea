@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { Comment } from "../comps/Comment"
 import '../assets/news.scss'
 
+// Each news page with comment section
 export const News = () => {
 
     const GET_ONE_NEWS = gql`

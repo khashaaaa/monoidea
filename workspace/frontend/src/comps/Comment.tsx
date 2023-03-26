@@ -7,6 +7,7 @@ interface CommentProps {
   newsmark: any;
 }
 
+//Comment bichih
 export const Comment = ({ newsmark }: CommentProps) => {
 
     const GET_ALL_COMMENT = gql`

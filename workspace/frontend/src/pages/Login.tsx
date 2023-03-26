@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, Navigate } from 'react-router-dom'
 import '../assets/login.scss'
 
+// Publisher should post after logged in
 export const Login = () => {
 
   const JOURNALIST_LOGIN = gql`

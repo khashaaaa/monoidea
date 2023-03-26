@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../assets/navbar.scss'
 
+// Navigation of website
 export const Navbar = () => {
 
     return (

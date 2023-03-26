@@ -1,0 +1,7 @@
+- Workspace folder доторх /backend, /frontend хавтсууд руу тус тусад орж нь NPM INSTALL хийнэ.
+- ROOT дээ очоод мөн NPM install хийнэ.
+- ROOT дотроо NPM RUN BUILD хийнэ.
+- Ингээд Docker-compose build, docker-compose up-аар docker container-аа ажиллуулна.
+
+- Хэрвээ docker доторх postgresql холбогдоход алдаа заавал local дээрх postgresql баазтай холбон ажиллуулна уу.
+- DB password-ийг /workspace/backend/config/variables/production.env файл дээр тохируулаарай. DB нэр mononews.

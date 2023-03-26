@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import '../assets/register.scss'
 
+// Register publisher name
 export const Register = () => {
 
     const REGISTER_JOURNALIST = gql`

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../assets/head.scss'
 
+// Top section
 export const Head = () => {
 
   return (

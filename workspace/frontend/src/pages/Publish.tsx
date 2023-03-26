@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import '../assets/publish.scss'
 
+// News publishing form
 export const Publish = () => {
 
     const PUBLISH_NEWS = gql`

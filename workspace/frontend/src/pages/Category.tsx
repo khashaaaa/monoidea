@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client"
 import { Link, useParams } from "react-router-dom"
 import '../assets/landing.scss'
 
+// Filter news by its type categories
 export const Category = () => {
 
   const GET_NEWS_BY_TYPE = gql`
