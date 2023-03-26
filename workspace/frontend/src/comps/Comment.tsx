@@ -1,9 +1,13 @@
 import { gql, useMutation, useQuery } from '@apollo/client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import '../assets/comment.scss'
 
-export const Comment = ({ newsmark }: any) => {
+interface CommentProps {
+  newsmark: any;
+}
+
+export const Comment = ({ newsmark }: CommentProps) => {
 
     const GET_ALL_COMMENT = gql`
         query FindAllComment($news: String!) {
@@ -34,9 +38,11 @@ export const Comment = ({ newsmark }: any) => {
     const { data: allComment } = useQuery(GET_ALL_COMMENT, { variables: { news: newsmark } })
     const [addComment, { data: commentAdded }] = useMutation(ADD_COMMENT)
 
-    if(commentAdded) {
-        return navigate(0)
-    }
+    useEffect(() => {
+      if (commentAdded) {
+        navigate(0)
+      }
+    }, [commentAdded, navigate])
 
     return (
         <div className="comment">
@@ -67,7 +73,7 @@ export const Comment = ({ newsmark }: any) => {
 
             <div className="conversations">
                 {
-                    allComment?.findAllComment.map((comm: any, num: any) => {
+                    allComment?.findAllComment.map((comm: any, num: number) => {
                         return <div className="comm" key={num}>
                             <p className="user">{comm.user}: </p>
                             <p>{comm.text}</p>
@@ -76,5 +82,5 @@ export const Comment = ({ newsmark }: any) => {
                 }
             </div>
         </div>
-    )
+    );
 }
